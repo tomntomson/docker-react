@@ -7,3 +7,9 @@ before_install:
 
 script:
   - docker run tomntomson/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region:
+
+  
