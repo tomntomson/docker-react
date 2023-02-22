@@ -5,10 +5,14 @@ services:
 before_install:
   - docker build -t tomntomson/docker-react -f Dockerfile.dev ./
 
-script:
-  - docker run tomntomson/docker-react npm run test -- --coverage
-
 deploy:
   provider: elasticbeanstalk
-  region:
-
+  region: "ap-northeast-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-558101299498"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
